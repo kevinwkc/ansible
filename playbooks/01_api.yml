@@ -1,0 +1,18 @@
+- name: test api
+  hosts: localhost
+  gather_facts: False
+
+  tasks:
+  - name: google search
+    uri:
+      url: https://google-search3.p.rapidapi.com/api/v1/search/q=elon+musk&num=100
+      method: GET
+      return_content: yes
+      headers:
+        x-rapidapi-host: google-search3.p.rapidapi.com
+        x-rapidapi-key: "{{ api_key }}"
+    register: result
+
+  - debug:
+      msg: "{{ result }}"
+

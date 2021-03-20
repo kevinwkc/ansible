@@ -1,0 +1,12 @@
+version: 3
+services:
+    ansible:
+        build:
+          context: .
+          dockerfile: Dockerfile
+        container_name: my-ansible
+        env_file:
+          - .env
+        volumes:
+            - '.:/data'
+        image: ansible/ansible-runner
